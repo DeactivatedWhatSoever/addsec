@@ -17,6 +17,9 @@ def not_found(error):
 
 # Register blueprints
 # TODO: Create blueprints and register over here
+from app.address.controllers import address_page
+app.register_blueprint(address_page)
+
 
 # Setup database
 db.create_all()

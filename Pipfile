@@ -11,6 +11,7 @@ flask-sqlalchemy = "*"
 pytest = "*"
 flask-wtf = "*"
 mysqlclient = "*"
+jinja2 = "*"
 
 [requires]
 python_version = "3.7"
