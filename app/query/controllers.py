@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from .models import Query, QueryResult
 
 
 query_page = Blueprint('query', __name__, template_folder='../templates')

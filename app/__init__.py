@@ -17,10 +17,10 @@ def not_found(error):
 
 # Register blueprints
 # TODO: Create blueprints and register over here
-from app.address.controllers import address_page
+from app.query.controllers import query_page 
 from app.report.controllers import report_page 
 
-app.register_blueprint(address_page)
+app.register_blueprint(query_page)
 app.register_blueprint(report_page)
 
 
