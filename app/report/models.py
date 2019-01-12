@@ -10,7 +10,7 @@ class Report(db.Model):
    tx_at = db.Column(db.DateTime(), nullable=False)
    tx_from = db.Column(db.String(255), nullable=False)
    tx_to = db.Column(db.String(255), nullable=False)
-   quantity = db.Column(db.String(255), nullable=False)
+   quantity = db.Column(db.Float(), nullable=False)
    description = db.Column(db.Text())
    created_at = db.Column(db.DateTime,  default=db.func.current_timestamp())
    updated_at = db.Column(db.DateTime,  default=db.func.current_timestamp(), 
@@ -26,7 +26,7 @@ class Report(db.Model):
         self.description = description
 
     def __repr__(self):
-        return '<Report %s, >' % (
+        return '<Report %r, %r, %r, %r, %r, %r, %r, %r>' % (
                 self.id,
                 self.symbol,
                 self.tx_hash,
