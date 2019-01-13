@@ -89,5 +89,8 @@ def index():
 
 @query_page.route('/queries/<address>', methods=['GET'])
 def query_address(address):
-	return get_score(address)
+        """
+        Example: curl localhost:8080/queries/1234
+        """
+        return get_score(address)
 
