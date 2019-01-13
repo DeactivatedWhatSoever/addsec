@@ -13,6 +13,10 @@ def get_score(address):
 	report_result = ReportResult.query.filter_by(tx_to=address).first()
 	if not report_result:
 		return 'Address not found. Not safe!'
+
+	if report_result.total_fraud == 1:
+		return '100 점'
+		
 	bCuriousNum = report_result.total_curious
 	bFraudNum = report_result.total_fraud
 	# bCuriousScore # 구해야 함
