@@ -27,6 +27,14 @@
       </div>
     </div>
     <div class="row">
+      <div class="col-md-12" style="margin-top: 20px;">
+        <button id="404" type="button" class="btn btn-danger">404</button>
+        <button id="43" type="button" class="btn btn-success">43</button>
+        <button id="50" type="button" class="btn btn-success">50</button>
+        <button id="100" type="button" class="btn btn-success">100</button>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-md-12">
         <div id="search-results" style="margin-top: 20px;"></div>
       </div>
@@ -38,11 +46,31 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   <script>
-    $('#search-button').click(function() {
-      var address = $('#search-input').val();
+    function queryAddress(address) {
+      $('#search-input').val(address);
       $.get('/queries/' + address, function(data) {
         $('#search-results').html('<h2>' + data + '</h2>');
       });
+    }
+
+    $('#search-button').click(function() {
+      queryAddress($('#search-input').val());
+    });
+
+    $('#404').click(function() {
+      queryAddress("0x6833cd7ca295ed104fd3b437ce5a4b86c9ab5fd3");
+    });
+
+    $('#100').click(function() {
+      queryAddress('0x2664c334c46635f7845487d3bab16992fc83a93e');
+    });
+
+    $('#43').click(function() {
+      queryAddress('0x6833cd7ca295ed104fd3b437ce5a4b86c9ab5fd4');
+    });
+
+    $('#50').click(function() {
+      queryAddress('0xa74476443119a942de498590fe1f2454d7d4ac0d');
     });
   </script>
 </body>

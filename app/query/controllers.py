@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, jsonify
 from .models import Query, QueryResult
 from app.report.models import Report, ReportResult
 from app import db
+from random import randint
 
 import math as m
 
@@ -10,10 +11,12 @@ query_page = Blueprint('query', __name__, template_folder='../templates')
 
 
 def get_score(address):
+	if len(address) != 42:
+                print('what',len(address))
+                return 'Address not formal.'
 	report_result = ReportResult.query.filter_by(tx_to=address).first()
 	if not report_result:
-		return 'Address not found. Not safe!'
-
+		return 'Address is safe!'
 	if report_result.total_fraud == 1:
 		return '100 점'
 		
@@ -43,7 +46,7 @@ def get_score(address):
 		y2 = g/(1+d*m.exp(-a*bCuriousNum)) + m.log(c*bCuriousNum, 10) + b
 		bCuriousScore = (y2/y1)*100
 	## base score의 fraud 구하기
-	bFraudScore = bFraudNum * 100
+	bFraudScore = bFraudNum * randint(1, 100)
 	## base score 구하기
 	bScore = (bCuriousScore + bFraudScore)/2
 	# depth score 구하기
