@@ -18,7 +18,7 @@ def get_score(address):
 	if not report_result:
 		return 'Address is safe!'
 	if report_result.total_fraud == 1:
-		return '100 점'
+		return '100 Points'
 		
 	bCuriousNum = report_result.total_curious
 	bFraudNum = report_result.total_fraud
@@ -86,7 +86,7 @@ def get_score(address):
 	dScore = (dCuriousScore + dFraudScore)/2
 	# 최종 스코어 구하기
 	resultScore = (bScore+ dScore)/2
-	return f'{int(resultScore):d} 점'
+	return f'{int(resultScore):d} Points'
 
 
 @query_page.route('/', methods=['GET'])
